@@ -9,7 +9,7 @@ public class EmTransporte extends Estado {
     }
 
     @Override
-    public String obterNomeEstado() {
+    public String getEstado() {
         return "Em Transporte";
     }
 

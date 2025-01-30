@@ -1,7 +1,7 @@
 public abstract class Estado {
     
     // Returns the name of the current state (Em Preparo, Em Espera, etc.)
-    public abstract String obterNomeEstado();
+    public abstract String getEstado();
 
     // Default actions for each state, can be overridden by concrete states
     public boolean preparar(Pedido pedido) {

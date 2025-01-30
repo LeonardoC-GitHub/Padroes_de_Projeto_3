@@ -9,8 +9,12 @@ public class Pedido {
         this.estado = estado;
     }
 
+    public Estado getEstado() {
+        return estado;
+    }
+
     public void manipular() {
-        System.out.println("Pedido está no estado: " + estado.obterNomeEstado());
+        System.out.println("Pedido está no estado: " + estado.getEstado());
     }
 
     public boolean preparar() {
@@ -32,4 +36,5 @@ public class Pedido {
     public boolean finalizarPedido() {
         return estado.finalizar(this);
     }
+
 }

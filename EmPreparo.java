@@ -9,7 +9,7 @@ public class EmPreparo extends Estado {
     }
 
     @Override
-    public String obterNomeEstado() {
+    public String getEstado() {
         return "Em Preparo";
     }
 

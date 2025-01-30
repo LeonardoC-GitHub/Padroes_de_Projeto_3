@@ -9,7 +9,7 @@ public class Cancelado extends Estado {
     }
 
     @Override
-    public String obterNomeEstado() {
+    public String getEstado() {
         return "Cancelado";
     }
 

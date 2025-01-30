@@ -9,7 +9,7 @@ public class Finalizado extends Estado {
     }
 
     @Override
-    public String obterNomeEstado() {
+    public String getEstado() {
         return "Finalizado";
     }
 
