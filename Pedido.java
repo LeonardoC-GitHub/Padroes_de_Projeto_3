@@ -1,16 +1,23 @@
-public class Pedido {
-    private Estado estado;
+import java.util.Observable;
 
+public class Pedido extends Observable {
+    private PedidoEstado estado;
+
+    // Constructor: Initially, the state is "Em Preparo"
     public Pedido() {
-        this.estado = EmPreparo.obterInstancia();  // Initial state is "Em Preparo"
+        this.estado = PedidoEmPreparo.obterInstancia();  // Initial state is "Em Preparo"
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public Estado getEstado() {
+    // Getter for the current state of the Pedido
+    public PedidoEstado getEstado() {
         return estado;
+    }
+
+    // Setter for changing the state and notifying observers
+    public void setEstado(PedidoEstado estado) {
+        this.estado = estado;
+        setChanged();  // Marks the object as changed
+        notifyObservers();  // Notify all registered observers
     }
 
     public void manipular() {
@@ -36,5 +43,4 @@ public class Pedido {
     public boolean finalizarPedido() {
         return estado.finalizar(this);
     }
-
 }

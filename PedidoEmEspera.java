@@ -1,10 +1,10 @@
-public class EmEspera extends Estado {
+public class PedidoEmEspera extends PedidoEstado {
 
-    private static final EmEspera instancia = new EmEspera();
+    private static final PedidoEmEspera instancia = new PedidoEmEspera();
 
-    private EmEspera() {}
+    private PedidoEmEspera() {}
 
-    public static EmEspera obterInstancia() {
+    public static PedidoEmEspera obterInstancia() {
         return instancia;
     }
 
@@ -26,19 +26,23 @@ public class EmEspera extends Estado {
 
     @Override
     public boolean transportar(Pedido pedido) {
-        pedido.setEstado(EmTransporte.obterInstancia());  // Transition to "Em Transporte"
+        pedido.setEstado(PedidoEmTransporte.obterInstancia());  // Transition to "Em Transporte"
         return true;
     }
 
     @Override
     public boolean cancelar(Pedido pedido) {
-        pedido.setEstado(Cancelado.obterInstancia());  // Transition to "Cancelado"
+        pedido.setEstado(PedidoCancelado.obterInstancia());  // Transition to "Cancelado"
         return true;
     }
 
     @Override
     public boolean finalizar(Pedido pedido) {
-        pedido.setEstado(Finalizado.obterInstancia());  // Transition to "Finalizado"
+        pedido.setEstado(PedidoFinalizado.obterInstancia());  // Transition to "Finalizado"
         return true;
     }
+    public String toString() {
+        return getEstado();  // This will return "Em Preparo"
+    }
+
 }

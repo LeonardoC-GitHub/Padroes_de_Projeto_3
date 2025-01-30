@@ -1,18 +1,18 @@
-public class Finalizado extends Estado {
+public class PedidoCancelado extends PedidoEstado {
 
-    private static final Finalizado instancia = new Finalizado();
+    private static final PedidoCancelado instancia = new PedidoCancelado();
 
-    private Finalizado() {}
+    private PedidoCancelado() {}
 
-    public static Finalizado obterInstancia() {
+    public static PedidoCancelado obterInstancia() {
         return instancia;
     }
 
     @Override
     public String getEstado() {
-        return "Finalizado";
+        return "Cancelado";
     }
-
+    
     @Override
     public boolean preparar(Pedido pedido) {
         return false;  // Can't go back to "Em Preparo"
@@ -30,12 +30,13 @@ public class Finalizado extends Estado {
 
     @Override
     public boolean cancelar(Pedido pedido) {
-        return false;  // Can't go to "Cancelado"
+        // Already in "Cancelado", no state change
+        return false;
     }
 
     @Override
     public boolean finalizar(Pedido pedido) {
-        // Already "Finalizado", no state change
-        return false;
+        pedido.setEstado(PedidoFinalizado.obterInstancia());  // Transition to "Finalizado"
+        return true;
     }
 }

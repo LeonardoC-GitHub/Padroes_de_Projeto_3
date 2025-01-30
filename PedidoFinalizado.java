@@ -1,16 +1,16 @@
-public class EmTransporte extends Estado {
+public class PedidoFinalizado extends PedidoEstado {
 
-    private static final EmTransporte instancia = new EmTransporte();
+    private static final PedidoFinalizado instancia = new PedidoFinalizado();
 
-    private EmTransporte() {}
+    private PedidoFinalizado() {}
 
-    public static EmTransporte obterInstancia() {
+    public static PedidoFinalizado obterInstancia() {
         return instancia;
     }
 
     @Override
     public String getEstado() {
-        return "Em Transporte";
+        return "Finalizado";
     }
 
     @Override
@@ -25,19 +25,21 @@ public class EmTransporte extends Estado {
 
     @Override
     public boolean transportar(Pedido pedido) {
-        // Already in "Em Transporte", no state change
-        return false;
+        return false;  // Can't go to "Em Transporte"
     }
 
     @Override
     public boolean cancelar(Pedido pedido) {
-        pedido.setEstado(Cancelado.obterInstancia());  // Transition to "Cancelado"
-        return true;
+        return false;  // Can't go to "Cancelado"
     }
 
     @Override
     public boolean finalizar(Pedido pedido) {
-        pedido.setEstado(Finalizado.obterInstancia());  // Transition to "Finalizado"
-        return true;
+        // Already "Finalizado", no state change
+        return false;
     }
+    public String toString() {
+        return getEstado();  // This will return "Em Preparo"
+    }
+
 }

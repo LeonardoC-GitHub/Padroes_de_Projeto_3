@@ -14,20 +14,20 @@ public class PedidoTest {
 
     @Test
     public void testEstadoInicial() {
-        assertEquals("Em Preparo", pedido.getEstado(), "Estado inicial deve ser 'Em Preparo'");
+        assertEquals("Em Preparo", pedido.getEstado().toString(), "Estado inicial deve ser 'Em Preparo'");
     }
 
     @Test
     public void testTransicaoParaEmEspera() {
         pedido.aguardarTransporte();
-        assertEquals("Em Espera", pedido.getEstado().getEstado(), "Após aguardar, estado deve ser 'Em Espera'");
+        assertEquals("Em Espera", pedido.getEstado().getEstado().toString(), "Após aguardar, estado deve ser 'Em Espera'");
     }
 
     @Test
     public void testTransicaoParaEmTransporte() {
         pedido.aguardarTransporte();  // Primeiro, vai para "Em Espera"
         pedido.transportar();
-        assertEquals("Em Transporte", pedido.getEstado().getEstado(), "Após transporte, estado deve ser 'Em Transporte'");
+        assertEquals("Em Transporte", pedido.getEstado().getEstado().toString(), "Após transporte, estado deve ser 'Em Transporte'");
     }
 
     @Test
@@ -35,13 +35,13 @@ public class PedidoTest {
         pedido.aguardarTransporte();  // Primeiro, vai para "Em Espera"
         pedido.transportar();         // Depois, vai para "Em Transporte"
         pedido.finalizarPedido();
-        assertEquals("Finalizado", pedido.getEstado().getEstado(), "Após finalizar, estado deve ser 'Finalizado'");
+        assertEquals("Finalizado", pedido.getEstado().getEstado().toString(), "Após finalizar, estado deve ser 'Finalizado'");
     }
 
     @Test
     public void testTransicaoParaCancelado() {
         pedido.cancelar();
-        assertEquals("Cancelado", pedido.getEstado().getEstado(), "Após cancelar, estado deve ser 'Cancelado'");
+        assertEquals("Cancelado", pedido.getEstado().getEstado().toString(), "Após cancelar, estado deve ser 'Cancelado'");
     }
 
     @Test

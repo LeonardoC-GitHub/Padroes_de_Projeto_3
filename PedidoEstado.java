@@ -1,4 +1,4 @@
-public abstract class Estado {
+public abstract class PedidoEstado {
     
     // Returns the name of the current state (Em Preparo, Em Espera, etc.)
     public abstract String getEstado();
@@ -23,4 +23,5 @@ public abstract class Estado {
     public boolean finalizar(Pedido pedido) {
         return false;
     }
+    
 }
